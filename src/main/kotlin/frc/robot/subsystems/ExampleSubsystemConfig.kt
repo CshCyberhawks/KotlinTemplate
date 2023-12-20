@@ -1,4 +1,4 @@
 package frc.robot.subsystems
 
-data class ExampleSubsystemConfig(val field: Double)
+data class ExampleSubsystemConfig(val exampleField: Double)
 
