@@ -1,12 +1,10 @@
 package frc.robot
 
-import edu.wpi.first.wpilibj.PowerDistribution
 import edu.wpi.first.wpilibj2.command.Command
 import edu.wpi.first.wpilibj2.command.CommandScheduler
 import org.littletonrobotics.junction.LogFileUtil
 import org.littletonrobotics.junction.LoggedRobot
 import org.littletonrobotics.junction.Logger
-import org.littletonrobotics.junction.networktables.NT4Publisher
 import org.littletonrobotics.junction.wpilog.WPILOGReader
 import org.littletonrobotics.junction.wpilog.WPILOGWriter
 
@@ -28,7 +26,11 @@ class Robot : LoggedRobot() {
     override fun robotInit() {
         // Instantiate our RobotContainer.  This will perform all our button bindings, and put our
         // autonomous chooser on the dashboard.
-        Logger.recordMetadata("ProjectName", "KotlinTemplate")
+        Logger.recordMetadata("ProjectName", BuildConstants.MAVEN_NAME)
+        Logger.recordMetadata("BuildDate", BuildConstants.BUILD_DATE)
+        Logger.recordMetadata("GitSHA", BuildConstants.GIT_SHA)
+        Logger.recordMetadata("GitDate", BuildConstants.GIT_DATE)
+        Logger.recordMetadata("GitBranch", BuildConstants.GIT_BRANCH)
         if (isReal()) {
 //            Logger.addDataReceiver(WPILOGWriter("/U")) // Log to a USB stick
 //            Logger.addDataReceiver(NT4Publisher()) // Publish data to NetworkTables
