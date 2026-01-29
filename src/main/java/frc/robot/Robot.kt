@@ -8,6 +8,7 @@ import edu.wpi.first.wpilibj.util.WPILibVersion
 import edu.wpi.first.wpilibj2.command.Command
 import edu.wpi.first.wpilibj2.command.CommandScheduler
 import edu.wpi.first.wpilibj2.command.Commands
+import frc.robot.subsystems.TankDrive
 
 /**
  * The VM is configured to automatically run this object (which basically functions as a singleton class),
@@ -84,7 +85,7 @@ object Robot : TimedRobot() {
 
     /** This method is called periodically during operator control.  */
     override fun teleopPeriodic() {
-
+        TankDrive.gojustgogoddammit()
     }
 
     override fun testInit() {
