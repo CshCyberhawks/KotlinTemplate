@@ -1,9 +1,11 @@
 package frc.robot
 
+import edu.wpi.first.wpilibj2.command.Command
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController
 import edu.wpi.first.wpilibj2.command.button.Trigger
 import frc.robot.commands.ExampleCommand
 import frc.robot.subsystems.ExampleSubsystem
+import edu.wpi.first.wpilibj2.command.button.CommandJoystick
 
 /**
  * This class is where the bulk of the robot should be declared. Since Command-based is a
@@ -18,6 +20,9 @@ import frc.robot.subsystems.ExampleSubsystem
  */
 object RobotContainer
 {
+
+
+
     init
     {
         configureBindings()
@@ -25,7 +30,9 @@ object RobotContainer
     }
 
     // Replace with CommandPS4Controller or CommandJoystick if needed
-    private val driverController = CommandXboxController(0)
+    private val leftJoystick: CommandJoystick = CommandJoystick(0)
+    private val rightJoystick: CommandJoystick = CommandJoystick(1)
+
 
     /**
      * Use this method to define your `trigger->command` mappings. Triggers can be created via the
@@ -41,6 +48,6 @@ object RobotContainer
 
         // Schedule `exampleMethodCommand` when the Xbox controller's B button is pressed,
         // cancelling on release.
-        driverController.b().whileTrue(ExampleSubsystem.exampleMethodCommand())
+        leftJoystick.button(1).whileTrue(ExampleSubsystem.exampleMethodCommand())
     }
 }
