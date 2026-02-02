@@ -1,5 +1,6 @@
 package frc.robot.subsystems.swerve
 
+import com.ctre.phoenix6.hardware.TalonFX
 import edu.wpi.first.wpilibj.motorcontrol.PWMTalonFX
 import edu.wpi.first.wpilibj2.command.SubsystemBase
 import frc.robot.subsystems.swerve.SwerveConstants.bottomLeftRotationMotorID
@@ -16,21 +17,22 @@ import edu.wpi.first.wpilibj.motorcontrol.Talon
 import frc.robot.subsystems.swerve.SwerveConstants.leftJoystickID
 
 
-class SwerveIO : SubsystemBase() {
+object SwerveIO : SubsystemBase() {
     val topRightRotationMotor = TalonFX(topRightRotationMotorID)
-    val topLeftRotationMotor = PWMTalonFX(topLeftRotationMotorID)
-    val bottomRightRotationMotor = PWMTalonFX(bottomRightRotationMotorID)
-    val bottomLeftRotationMotor = PWMTalonFX(bottomLeftRotationMotorID)
-    val topRightTranslationMotor = PWMTalonFX(topRightTranslationMotorID)
-    val topLeftTranslationMotor = PWMTalonFX(topLeftTranslationMotorID)
-    val bottomLeftTranslationMotor = PWMTalonFX(bottomLeftTranslationMotorID)
-    val bottomRightTranslationMotor = PWMTalonFX(bottomRightTranslationMotorID)
+    val topLeftRotationMotor = TalonFX(topLeftRotationMotorID)
+    val bottomRightRotationMotor = TalonFX(bottomRightRotationMotorID)
+    val bottomLeftRotationMotor = TalonFX(bottomLeftRotationMotorID)
+    val topRightTranslationMotor = TalonFX(topRightTranslationMotorID)
+    val topLeftTranslationMotor = TalonFX(topLeftTranslationMotorID)
+    val bottomLeftTranslationMotor = TalonFX(bottomLeftTranslationMotorID)
+    val bottomRightTranslationMotor = TalonFX(bottomRightTranslationMotorID)
 
     val rightJoystick = Joystick(rightJoystickID)
     val leftJoystick = Joystick(leftJoystickID)
 
-    var thetaOfTopRightRotationalMotor =
-
+    var thetaOfRobot = 0 //degrees
+    var velocityOfTopRIghtRotationalMotor = getXSpeedOfRobot() +
+    var desiredThetaofTopRightMotor = Math.atan()
 
     fun setSpeedOfAllMotors(topRightRotationMotorSpeed : Double, topRightTranslationMotorSpeed : Double, topLeftRotationMotorSpeed : Double, topLeftTranslationMotorSpeed : Double, bottomLeftRotationMotorSpeed : Double, bottomLeftTranslationMotorSpeed : Double, bottomRightRotationMotorSpeed : Double, bottomRightTranslationMotorSpeed : Double) {
         topRightRotationMotor.set(topRightRotationMotorSpeed)
@@ -43,14 +45,20 @@ class SwerveIO : SubsystemBase() {
         bottomRightTranslationMotor.set(bottomRightTranslationMotorSpeed)
     }
 
-    fun getSpeedOfTopRightRotationMotor() : Double {
-        var leftX = leftJoystick.getX()
-        var rightX = rightJoystick.getX()
-        var rightY = rightJoystick.getY()
-        var velocity = Math.sqrt(Math.pow(rightX,2.0) + Math.pow(leftX,2.0))
+    fun getXSpeedOfRobot() : Double {
+        return rightJoystick.x
+    }
 
-        return 2.0
+    fun getYSpeedOfRobot() : Double {
+        return rightJoystick.y
+    }
+
+    fun getSpeedOfTopRightRotationalMotor() {
 
     }
 
+
+
+    fun makeRobotMove() {
+    }
 }

@@ -13,8 +13,9 @@ object SwerveConstants {
     const val leftJoystickID = 0
     const val rightJoystickID = 1
 
-    const val width = 30.0 //inches
-    const val length = 30.0 // inches
+    const val width = 27.5 //inches
+    const val length = 27.5 // inches
+
 
 
 }
