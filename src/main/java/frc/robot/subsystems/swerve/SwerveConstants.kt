@@ -16,6 +16,12 @@ object SwerveConstants {
     const val width = 27.5 //inches
     const val length = 27.5 // inches
 
+    const val maxVelocity = .8 // Unit
+    const val accelerationStep = 0.06 //Units
+    const val acceleration = 3 //Units/s^2
+    const val rotationalAcceleration = acceleration * 100 * 360 //degrees/s
+    const val rotationalMaxVelocity = maxVelocity * 100 * 360 //degrees
+
 
 
 }
